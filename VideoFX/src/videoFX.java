@@ -57,9 +57,9 @@ public class videoFX extends javax.swing.JFrame {
             @Override
             public void run() {
                 StackPane root = new StackPane();
-                File f=new File("C://Users//Jose//Videos//Video3.mp4");
-                 System.out.println(f.isFile());
-                Media file=new Media(f.toURI().toString());
+                //File f=new File("C://Users//Jose//Videos//Video3.mp4");
+               //  System.out.println(f.isFile());
+               // Media file=new Media(f.toURI().toString());
                 /*Media file = new Media("file:/C:/Users/Jose_Duran/Desktop/videos/DavidGuetta-Dangerous.mp4");*/
                 oracleVid = new MediaPlayer(file);
                 oracleVid.setAutoPlay(true);
@@ -82,11 +82,11 @@ public class videoFX extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jSlider1 = new javax.swing.JSlider();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jSlider2 = new javax.swing.JSlider();
+        PausarReproducirBoton = new javax.swing.JButton();
+        barraProgreso = new javax.swing.JSlider();
+        tiempoTranscurridoLabel = new javax.swing.JLabel();
+        tiempoLabel = new javax.swing.JLabel();
+        VolumeSlider = new javax.swing.JSlider();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -110,26 +110,26 @@ public class videoFX extends javax.swing.JFrame {
             .addGap(0, 710, Short.MAX_VALUE)
         );
 
-        jButton1.setText("Pausar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        PausarReproducirBoton.setText("Pausar");
+        PausarReproducirBoton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton1MousePressed(evt);
+                PausarReproducirBotonMousePressed(evt);
             }
         });
 
-        jSlider1.addMouseListener(new java.awt.event.MouseAdapter() {
+        barraProgreso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jSlider1MouseReleased(evt);
+                barraProgresoMouseReleased(evt);
             }
         });
 
-        jLabel1.setText("00:00:00");
+        tiempoTranscurridoLabel.setText("00:00:00");
 
-        jLabel2.setText("00:00:00");
+        tiempoLabel.setText("00:00:00");
 
-        jSlider2.addMouseListener(new java.awt.event.MouseAdapter() {
+        VolumeSlider.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jSlider2MouseReleased(evt);
+                VolumeSliderMouseReleased(evt);
             }
         });
 
@@ -144,16 +144,16 @@ public class videoFX extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(tiempoTranscurridoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PausarReproducirBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(132, 132, 132)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(VolumeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
-                        .addComponent(jLabel2))
-                    .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(tiempoLabel))
+                    .addComponent(barraProgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -161,47 +161,46 @@ public class videoFX extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jLabel2)
+                        .addComponent(PausarReproducirBoton)
+                        .addComponent(tiempoLabel)
                         .addComponent(jLabel3))
-                    .addComponent(jLabel1)
-                    .addComponent(jSlider2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(tiempoTranscurridoLabel)
+                    .addComponent(VolumeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 boolean estado = true;
-    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+    private void PausarReproducirBotonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PausarReproducirBotonMousePressed
         // TODO add your handling code here:
         //oracleVid.play();
         if (estado) {
-            jButton1.setText("Reproducir");
+            PausarReproducirBoton.setText("Reproducir");
             oracleVid.pause();
             estado = false;
         } else if (!estado) {
-            jButton1.setText("Pausar");
+            PausarReproducirBoton.setText("Pausar");
             oracleVid.play();
             estado = true;
         }
 
 
-    }//GEN-LAST:event_jButton1MousePressed
+    }//GEN-LAST:event_PausarReproducirBotonMousePressed
     void asiganarTiempo() {
         try {
             Thread.sleep(1000);
-            jSlider2.setMinimum(0);
-            jSlider2.setMaximum(10);
-            jSlider1.setMinimum(0);
+            VolumeSlider.setMinimum(0);
+            VolumeSlider.setMaximum(10);
             double sec = oracleVid.getTotalDuration().toSeconds();
             int val = (int) sec;
-            jSlider1.setMaximum(val);
+            barraProgreso.setMaximum(val);
 
-            jLabel2.setText(obtenerMinutos(val) + "");
+            tiempoLabel.setText(obtenerMinutos(val) + "");
             hilo.start();
 
         } catch (InterruptedException ex) {
@@ -242,31 +241,31 @@ boolean estado = true;
 
         double sec = oracleVid.getCurrentTime().toSeconds();
         int val = (int) sec;
-        jSlider1.setValue(val);
+        barraProgreso.setValue(val);
 
-        jLabel1.setText(obtenerMinutos(val));
+        tiempoTranscurridoLabel.setText(obtenerMinutos(val));
 
     }
 
-    private void jSlider1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider1MouseReleased
+    private void barraProgresoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraProgresoMouseReleased
         // TODO add your handling code here:
         //tratar de trabajar todo en segundo
 
         //reproduce se obtiene el valor del jSlider1 y se manda al video
-        int val = jSlider1.getValue();
+        int val = barraProgreso.getValue();
         oracleVid.seek(Duration.seconds(val));
 
 
-    }//GEN-LAST:event_jSlider1MouseReleased
+    }//GEN-LAST:event_barraProgresoMouseReleased
 
-    private void jSlider2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSlider2MouseReleased
+    private void VolumeSliderMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VolumeSliderMouseReleased
         // TODO add your handling code here:
-        double val = jSlider2.getValue();
+        double val = VolumeSlider.getValue();
         val *= 0.1;
         oracleVid.setVolume(val);
 
 
-    }//GEN-LAST:event_jSlider2MouseReleased
+    }//GEN-LAST:event_VolumeSliderMouseReleased
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
@@ -311,12 +310,12 @@ boolean estado = true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton PausarReproducirBoton;
+    private javax.swing.JSlider VolumeSlider;
+    private javax.swing.JSlider barraProgreso;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSlider jSlider1;
-    private javax.swing.JSlider jSlider2;
+    private javax.swing.JLabel tiempoLabel;
+    private javax.swing.JLabel tiempoTranscurridoLabel;
     // End of variables declaration//GEN-END:variables
 }
